@@ -27,4 +27,21 @@
 
 ### Решение 3
 
-![3](https://github.com/sailent9/SQL2/assets/130309754/2db45acc-97ab-4b2c-ab63-369f93c45e9a)
+
+```sql
+USE sakila;
+SELECT 
+YEAR(payment_date) AS year, 
+MONTH(payment_date) AS month, 
+COUNT(DISTINCT rental.rental_id) as rental_count, 
+SUM(amount) as total_payment
+FROM payment
+JOIN rental ON payment.rental_id = rental.rental_id
+GROUP BY year, month
+ORDER BY total_payment DESC
+LIMIT 1;
+```
+![3](https://github.com/sailent9/SQL2/assets/130309754/e16efde7-c26f-427b-9be7-3963d5acd0be)
+
+
+
